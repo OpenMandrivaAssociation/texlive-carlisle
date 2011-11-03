@@ -1,3 +1,9 @@
+# revision 18258
+# category Package
+# catalog-ctan /macros/latex/contrib/carlisle
+# catalog-date 2010-02-18 13:36:42 +0100
+# catalog-license lppl
+# catalog-version undef
 Name:		texlive-carlisle
 Version:	20100218
 Release:	1
@@ -57,6 +63,7 @@ and - An environment for including HTML in LaTeX documents.
 %doc %{_texmfdistdir}/doc/latex/carlisle/ltxtable.pdf
 #- source
 %doc %{_texmfdistdir}/source/latex/carlisle/ltxtable.tex
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -67,3 +74,5 @@ and - An environment for including HTML in LaTeX documents.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
