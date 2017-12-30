@@ -5,8 +5,8 @@
 # catalog-license lppl
 # catalog-version undef
 Name:		texlive-carlisle
-Version:	20100218
-Release:	10
+Version:	20170414
+Release:	1
 Summary:	David Carlisle's small packages
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/carlisle
