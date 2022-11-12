@@ -1,19 +1,13 @@
-# revision 18258
-# category Package
-# catalog-ctan /macros/latex/contrib/carlisle
-# catalog-date 2010-02-18 13:36:42 +0100
-# catalog-license lppl
-# catalog-version undef
 Name:		texlive-carlisle
-Version:	20170414
-Release:	3
+Version:	59577
+Release:	1
 Summary:	David Carlisle's small packages
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/carlisle
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.r59577.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.doc.r59577.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.source.r59577.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -33,49 +27,27 @@ arbitrary sizes; - A jiffy to create 'slashed' for physicists;
 and - An environment for including HTML in LaTeX documents.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
-%{_texmfdistdir}/tex/latex/carlisle/dotlessj.sty
-%{_texmfdistdir}/tex/latex/carlisle/ltxtable.sty
-%{_texmfdistdir}/tex/latex/carlisle/mylatex.ltx
-%{_texmfdistdir}/tex/latex/carlisle/plain.sty
-%{_texmfdistdir}/tex/latex/carlisle/remreset.sty
-%{_texmfdistdir}/tex/latex/carlisle/scalefnt.sty
-%{_texmfdistdir}/tex/latex/carlisle/slashed.sty
-%doc %{_texmfdistdir}/doc/latex/carlisle/README
-%doc %{_texmfdistdir}/doc/latex/carlisle/ltx1.tex
-%doc %{_texmfdistdir}/doc/latex/carlisle/ltxtable.pdf
+%{_texmfdistdir}/tex/latex/carlisle
+%doc %{_texmfdistdir}/doc/latex/carlisle
 #- source
-%doc %{_texmfdistdir}/source/latex/carlisle/ltxtable.tex
+%doc %{_texmfdistdir}/source/latex/carlisle
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Tue Jan 03 2012 Paulo Andrade <pcpa@mandriva.com.br> 20100218-2
-+ Revision: 749975
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 20100218-1
-+ Revision: 718007
-- texlive-carlisle
-- texlive-carlisle
-- texlive-carlisle
-- texlive-carlisle
-- texlive-carlisle
-
