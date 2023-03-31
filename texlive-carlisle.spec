@@ -1,6 +1,6 @@
 Name:		texlive-carlisle
 Version:	59577
-Release:	1
+Release:	2
 Summary:	David Carlisle's small packages
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/carlisle
