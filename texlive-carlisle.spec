@@ -3,7 +3,7 @@ Version:	59577
 Release:	2
 Summary:	David Carlisle's small packages
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/carlisle
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/carlisle
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.doc.r%{version}.tar.xz
