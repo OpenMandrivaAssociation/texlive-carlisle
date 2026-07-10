@@ -1,53 +1,29 @@
-Name:		texlive-carlisle
-Version:	59577
-Release:	2
-Summary:	David Carlisle's small packages
+%global tl_name carlisle
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Version:	%{tl_revision}
+Release:	1
+Summary:	David Carlisles small packages
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/carlisle
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.source.r%{version}.tar.xz
+License:	lppl1
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/carlisle.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-Many of David Carlisle's more substantial packages stand on
-their own, or as part of the LaTeX tools set; this set
-contains: - Making dotless 'j' characters for fonts that don't
-have them; - Fix marks in 2-column output; - A method for
-combining the capabilities of longtable and tabularx; - A
-proforma for building personalised LaTeX formats; - A jiffy to
-suppress page numbers; - An environment for including Plain TeX
-in LaTeX documents; - A jiffy to remove counters from other
-counters' reset lists; - A package to rescale fonts to
-arbitrary sizes; - A jiffy to create 'slashed' for physicists;
-and - An environment for including HTML in LaTeX documents.
+Many of David Carlisle's more substantial packages stand on their own,
+or as part of the LaTeX latex-tools set; this set contains: Making
+dotless 'j' characters for fonts that don't have them; A method for
+combining the capabilities of longtable and tabularx; An environment for
+including Plain TeX in LaTeX documents; A jiffy to remove counters from
+other counters' reset lists (now obsolete as it has been incorporated
+into the LaTeX format); A jiffy to create 'slashed' characters for
+physicists.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/carlisle
-%doc %{_texmfdistdir}/doc/latex/carlisle
-#- source
-%doc %{_texmfdistdir}/source/latex/carlisle
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
